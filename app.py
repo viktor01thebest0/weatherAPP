@@ -3,7 +3,6 @@ import pandas as pd
 from datetime import datetime
 
 API_KEY = "5fb128bdc12e29c2c7a1cc81e0f2140c"
-API_KEY = "5fb128bdc12e29c2c7a1cc81e0f2140c"
 CITY = "Plovdiv"
 URL = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
 URL = f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API key}"
@@ -34,3 +33,13 @@ def get_weather_data():
         "humidity": "mean"
     })
     return df
+
+NORMALS = {
+    "April": {"temp": 14, "rain_days": 7},
+    "May": {"temp": 18, "rain_days": 9}
+}
+
+if avg_temp > NORMALS["April"]["temp"] + 2:
+    st.warning("⚠️ Температурите са необичайно високи!")
+else:
+    st.success("✅ Температурите са в норма.")
